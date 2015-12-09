@@ -40,15 +40,22 @@ var styles = StyleSheet.create({
   },
   container: {
     flex: 1
+  },
+  text: {
+    color: 'black',
+    backgroundColor: 'white',
+    fontSize: 30,
+    margin: 80
   }
 });
 
 var AddArtists = React.createClass({
-    render: function () {
-      return (
-        <View>
-          <Text> 'You're on the AddArtists Page!'</Text>
-        </View>
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>You're on the AddArtists page!</Text>
+      </View>
       );
     }
 });

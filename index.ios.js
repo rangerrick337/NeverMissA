@@ -2,6 +2,7 @@
 
 var React = require('react-native');
 var HomePage = require('./HomePage');
+var AddArtists = require('./AddArtists');
 
 var {
   StyleSheet,
@@ -27,14 +28,23 @@ var styles = StyleSheet.create({
 
 var NeverMissA = React.createClass({
 
+  onRightButtonPress: function() {
+    this.refs.nav.push({
+      title: 'Add Artists',
+      component: AddArtists,
+   })
+ },
+
   render: function() {
     return (
       <NavigatorIOS
+        ref='nav'
         style={styles.container}
         initialRoute={{
           component: HomePage,
           title: 'NeverMissA',
           rightButtonTitle: 'Add artists',
+          onRightButtonPress: this.onRightButtonPress,
         }}
       />
     );

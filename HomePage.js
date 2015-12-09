@@ -62,7 +62,6 @@ var HomePage = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.text}>You're on the HomePage!</Text>
-        <Text style={styles.text}>Testing Git</Text>
       </View>
     );
   }

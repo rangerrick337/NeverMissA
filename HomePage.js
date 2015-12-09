@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-var Settings = require('./Settings');
+var AddArtists = require('./AddArtists');
 
 var {
   StyleSheet,
@@ -54,7 +54,7 @@ var HomePage = React.createClass({
 
   _onRightButtonPress: function() {
     this.props.navigator.push({
-      Settings
+      AddArtists
    })
  },
 

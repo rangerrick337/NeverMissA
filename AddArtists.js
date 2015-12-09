@@ -43,15 +43,15 @@ var styles = StyleSheet.create({
   }
 });
 
-var Settings = React.createClass({
+var AddArtists = React.createClass({
     render: function () {
       return (
         <View>
-          <Text> 'You're on the Settings Page!'</Text>
+          <Text> 'You're on the AddArtists Page!'</Text>
         </View>
       );
     }
 });
 
 
-module.exports = Settings;
+module.exports = AddArtists;

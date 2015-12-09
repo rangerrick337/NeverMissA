@@ -52,14 +52,22 @@ var styles = StyleSheet.create({
 
 var HomePage = React.createClass({
 
-  _onRightButtonPress: function() {
+  onRightButtonPress: function() {
     this.props.navigator.push({
-      AddArtists
+      title: 'Add Artists',
+      component: AddArtists,
    })
  },
 
   render: function() {
     return (
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          onRightButtonPress: onRightButtonPress()
+        }}
+      />,
+
       <View style={styles.container}>
         <Text style={styles.text}>You're on the HomePage!</Text>
       </View>

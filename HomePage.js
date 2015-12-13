@@ -2,6 +2,7 @@
 
 var React = require('react-native');
 var AddArtists = require('./AddArtists');
+var AlbumDetails = require('./AlbumDetails');
 
 var {
   StyleSheet,
@@ -93,6 +94,16 @@ var HomePage = React.createClass({
     });
   },
 
+  _onPressAlbum: function(album) {
+    // var album = this.props.NEW_ALBUMS.filter(prop => prop.album_name == album)[0];
+
+    this.props.navigator.push({
+      title: album.album_name,
+      component: AlbumDetails,
+      passProps: {album},
+    });
+  },
+
   render: function() {
     if (!this.state.loaded) {
       return this.renderLoadingView();
@@ -119,17 +130,21 @@ var HomePage = React.createClass({
 
   renderNewAlbum: function(album) {
     return(
-      <View style={styles.container}>
-        <Image
-          source={{uri: album.album_artwork.thumbnail}}
-          style={styles.thumbnail}
-        />
-        <View style={styles.rightContainer}>
-          <Text style={styles.artist_name}>{album.artist_name}</Text>
-          <Text style={styles.album_name}>{album.album_name}</Text>
-          <Text style={styles.release_date}>{album.release_date}</Text>
+      <TouchableHighlight
+        underlayColor='#dddddd'
+        onPress={this._onPressAlbum}>
+        <View style={styles.container}>
+          <Image
+            source={{uri: album.album_artwork.thumbnail}}
+            style={styles.thumbnail}
+          />
+          <View style={styles.rightContainer}>
+            <Text style={styles.artist_name}>{album.artist_name}</Text>
+            <Text style={styles.album_name}>{album.album_name}</Text>
+            <Text style={styles.release_date}>{album.release_date}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   },
 });

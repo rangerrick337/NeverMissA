@@ -3,6 +3,7 @@
 var React = require('react-native');
 var HomePage = require('./HomePage');
 var AddArtists = require('./AddArtists');
+var AlbumDetails = require('./AlbumDetails');
 
 var {
   StyleSheet,
@@ -42,7 +43,7 @@ var NeverMissA = React.createClass({
         style={styles.container}
         initialRoute={{
           component: HomePage,
-          title: 'NeverMissA',
+          title: 'New Albums',
           rightButtonTitle: 'Add artists',
           onRightButtonPress: this.onRightButtonPress,
         }}

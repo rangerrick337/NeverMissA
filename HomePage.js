@@ -95,6 +95,9 @@ var HomePage = React.createClass({
   },
 
   _onPressAlbum: function(album) {
+
+// this is the function I want to be recieving the selected album from the renderNewAlbum function
+  // found the below code suggested in a tut, I don't know why I'd have to create a new variable here.
     // var album = this.props.NEW_ALBUMS.filter(prop => prop.album_name == album)[0];
 
     this.props.navigator.push({

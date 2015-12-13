@@ -11,7 +11,7 @@ var {
   TouchableHighlight,
   ListView,
   Text,
-  NavigatorIOS,
+  NavigatorIOS
 } = React;
 
 var styles = StyleSheet.create({

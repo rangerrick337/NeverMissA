@@ -46,7 +46,7 @@ var styles = StyleSheet.create({
     backgroundColor: 'white',
     fontSize: 30,
     margin: 80
-  }
+  },
 });
 
 var AddArtists = React.createClass({
@@ -56,6 +56,7 @@ var AddArtists = React.createClass({
       <View style={styles.container}>
         <Text style={styles.text}>You're on the AddArtists page!</Text>
       </View>
+
       );
     }
 });

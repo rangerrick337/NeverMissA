@@ -39,14 +39,30 @@ var styles = StyleSheet.create({
     padding: 10
   },
   container: {
-    flex: 1
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   text: {
     color: 'black',
     backgroundColor: 'white',
     fontSize: 30,
     margin: 80
-  }
+  },
+  button: {
+    height: 36,
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  },
 });
 
 var AlbumDetails = React.createClass({
@@ -54,7 +70,22 @@ var AlbumDetails = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>You're on the AlbumDetails page!</Text>
+        <Image
+          source={{uri: this.props.album.album_artwork.thumbnail}}
+          style={styles.thumbnail}
+        />
+        <View style={styles.rightContainer}>
+          <Text style={styles.artist_name}>{this.props.album.artist_name}</Text>
+          <Text style={styles.album_name}>{this.props.album.album_name}</Text>
+          <Text style={styles.release_date}>{this.props.album.release_date}</Text>
+          <Text style={styles.release_date}>{this.props.album.price}</Text>
+        </View>
+        <View>
+          <TouchableHighlight style={styles.button}
+              underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Buy on iTunes</Text>
+          </TouchableHighlight>
+        </View>
       </View>
       );
     }

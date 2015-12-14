@@ -94,7 +94,7 @@ var HomePage = React.createClass({
     });
   },
 
-  _onPressAlbum: function(album) {
+  selectAlbum: function(album) {
 
 // this is the function I want to be recieving the selected album from the renderNewAlbum function
   // found the below code suggested in a tut, I don't know why I'd have to create a new variable here.
@@ -135,7 +135,7 @@ var HomePage = React.createClass({
     return(
       <TouchableHighlight
         underlayColor='#dddddd'
-        onPress={this._onPressAlbum}>
+        onPress={() => this.selectAlbum(album)}>
         <View style={styles.container}>
           <Image
             source={{uri: album.album_artwork.thumbnail}}

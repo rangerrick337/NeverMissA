@@ -34,13 +34,28 @@ var styles = StyleSheet.create({
     fontSize: 20,
     color: '#656565'
   },
+  artist_name: {
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  album_name: {
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  release_date: {
+    textAlign: 'center',
+    fontSize: 8,
+  },
   rowContainer: {
-    flexDirection: 'row',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     padding: 10
   },
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
@@ -63,6 +78,10 @@ var styles = StyleSheet.create({
     alignSelf: 'stretch',
     justifyContent: 'center'
   },
+  largeArtwork: {
+    width: 300,
+    height: 300
+  },
 });
 
 var AlbumDetails = React.createClass({
@@ -72,13 +91,13 @@ var AlbumDetails = React.createClass({
       <View style={styles.container}>
         <Image
           source={{uri: this.props.album.album_artwork.thumbnail}}
-          style={styles.thumbnail}
+          style={styles.largeArtwork}
         />
         <View style={styles.rightContainer}>
           <Text style={styles.artist_name}>{this.props.album.artist_name}</Text>
           <Text style={styles.album_name}>{this.props.album.album_name}</Text>
           <Text style={styles.release_date}>{this.props.album.release_date}</Text>
-          <Text style={styles.release_date}>{this.props.album.price}</Text>
+          <Text style={styles.price}>{this.props.album.price}</Text>
         </View>
         <View>
           <TouchableHighlight style={styles.button}

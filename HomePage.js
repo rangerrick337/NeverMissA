@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react-native');
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 var AddArtists = require('./AddArtists');
 var AlbumDetails = require('./AlbumDetails');
 
@@ -13,6 +15,11 @@ var {
   Text,
   NavigatorIOS
 } = React;
+
+Parse.initialize(
+  'O2Fw3IPHmhoprtnktLBzFPuQqLWU9ZoN3QYNDCrA',
+  'v8pz1yu5ixvxiWq2qqIuOGyWStZwFU4mlubcCNpd'
+);
 
 var styles = StyleSheet.create({
   thumb: {
@@ -27,7 +34,7 @@ var styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#dddddd'
   },
-  price: {
+  album_price: {
     fontSize: 25,
     fontWeight: 'bold',
     color: '#48BBEC'
@@ -73,6 +80,12 @@ var styles = StyleSheet.create({
 });
 
 var HomePage = React.createClass({
+  mixins: [ParseReact.Mixin], // Enable query subscriptions
+
+  observe: function(props, state) {
+    var albumQuery = (new Parse.Query('Album')).descending('release_date');
+    return state.loaded ?  { albums: albumQuery } : null;
+  },
 
   getInitialState: function() {
     return {
@@ -149,12 +162,12 @@ var HomePage = React.createClass({
 });
 
 var NEW_ALBUMS = [
-  {artist_name: 'Jay-Z', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, price: '$49.99', release_date: '21/12/2013', album_name: 'Two'},
-  {artist_name: 'Disclosure', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, price: '$9.99', release_date: '01/01/2015', album_name: 'Caracal'},
-  {artist_name: 'Disclosure', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, price: '$29.99', release_date: '30/01/2012', album_name: 'Settle'},
-  {artist_name: 'Beck', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, price: '$99.99', release_date: '05/06/2006', album_name: 'Guero'},
-  {artist_name: 'Armin Van Burren', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, price: '$399.99', release_date: '11/02/2013', album_name: 'Intense'},
-  {artist_name: 'Alicia Keys', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, price: '$199.99', release_date: '16/11/1999', album_name: 'As I Am'}
+  {artist_name: 'Jay-Z', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$49.99', release_date: '21/12/2013', album_name: 'The Blueprint 3'},
+  {artist_name: 'Disclosure', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$9.99', release_date: '01/01/2015', album_name: 'Caracal'},
+  {artist_name: 'Disclosure', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$29.99', release_date: '30/01/2012', album_name: 'Settle'},
+  {artist_name: 'Beck', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$99.99', release_date: '05/06/2006', album_name: 'Guero'},
+  {artist_name: 'Armin Van Burren', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$399.99', release_date: '11/02/2013', album_name: 'Intense'},
+  {artist_name: 'Alicia Keys', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$199.99', release_date: '16/11/1999', album_name: 'As I Am'}
 ];
 
 var USER_ARTISTS = [

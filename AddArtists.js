@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react-native');
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 
 var {
   StyleSheet,
@@ -25,7 +27,7 @@ var styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#dddddd'
   },
-  price: {
+  album_price: {
     fontSize: 25,
     fontWeight: 'bold',
     color: '#48BBEC'

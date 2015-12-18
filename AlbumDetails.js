@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react-native');
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 
 var {
   StyleSheet,
@@ -25,7 +27,7 @@ var styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#dddddd'
   },
-  price: {
+  album_price: {
     fontSize: 25,
     fontWeight: 'bold',
     color: '#48BBEC'
@@ -97,7 +99,7 @@ var AlbumDetails = React.createClass({
           <Text style={styles.artist_name}>{this.props.album.artist_name}</Text>
           <Text style={styles.album_name}>{this.props.album.album_name}</Text>
           <Text style={styles.release_date}>{this.props.album.release_date}</Text>
-          <Text style={styles.price}>{this.props.album.price}</Text>
+          <Text style={styles.album_price}>{this.props.album.album_price}</Text>
         </View>
         <View>
           <TouchableHighlight style={styles.button}

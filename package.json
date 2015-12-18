@@ -6,6 +6,8 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "react-native": "^0.15.0"
+    "react-native": "^0.17.0-rc",
+    "parse": "1.6.12",
+    "parse-react": "0.5.0"
   }
 }

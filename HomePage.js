@@ -3,6 +3,7 @@
 var React = require('react-native');
 var AddArtists = require('./AddArtists');
 var AlbumDetails = require('./AlbumDetails');
+var AlbumRow = require('./AlbumRow');
 
 var {
   StyleSheet,
@@ -46,25 +47,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  rightContainer: {
-    flex: 1,
-  },
-  artist_name: {
-    fontSize: 20,
-    textAlign: 'center',
-  },
-  album_name: {
-    textAlign: 'center',
-    fontSize: 16,
-  },
-  release_date: {
-    textAlign: 'center',
-    fontSize: 8,
-  },
-  thumbnail: {
-    width: 53,
-    height: 81,
   },
   listview: {
     paddingTop: 20,
@@ -133,21 +115,11 @@ var HomePage = React.createClass({
 
   renderNewAlbum: function(album) {
     return(
-      <TouchableHighlight
-        underlayColor='#dddddd'
-        onPress={() => this.selectAlbum(album)}>
-        <View style={styles.container}>
-          <Image
-            source={{uri: album.album_artwork.thumbnail}}
-            style={styles.thumbnail}
-          />
-          <View style={styles.rightContainer}>
-            <Text style={styles.artist_name}>{album.artist_name}</Text>
-            <Text style={styles.album_name}>{album.album_name}</Text>
-            <Text style={styles.release_date}>{album.release_date}</Text>
-          </View>
-        </View>
-      </TouchableHighlight>
+      <AlbumRow
+        album={album}
+        onClick={(savedAlbum)=>{
+          this.selectAlbum(savedAlbum)
+        }} />
     );
   },
 });

@@ -80,11 +80,12 @@ var styles = StyleSheet.create({
 });
 
 var HomePage = React.createClass({
-  mixins: [ParseReact.Mixin], // Enable query subscriptions
+  mixins: [ParseReact.Mixin],
 
   observe: function(props, state) {
-    var albumQuery = (new Parse.Query('Album')).descending('release_date');
-    return state.loaded ?  { albums: albumQuery } : null;
+    return {
+      albums: (new Parse.Query('Album')).descending('release_date')
+    };
   },
 
   getInitialState: function() {
@@ -92,23 +93,21 @@ var HomePage = React.createClass({
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
-      loaded: false,
     };
   },
 
-  componentDidMount: function() {
-    this.fetchData();
-  },
-
-  fetchData: function() {
-    this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(NEW_ALBUMS),
-      loaded: true,
-    });
-  },
+  // componentDidMount: function() {
+  //   this.fetchData();
+  // },
+  //
+  // fetchData: function() {
+  //   this.setState({
+  //     dataSource: this.data.albums.map,
+  //     loaded: true,
+  //   });
+  // },
 
   selectAlbum: function(album) {
-
     this.props.navigator.push({
       title: album.album_name,
       component: AlbumDetails,
@@ -117,39 +116,37 @@ var HomePage = React.createClass({
   },
 
   render: function() {
-    if (!this.state.loaded) {
-      return this.renderLoadingView();
-    }
+
+    console.log(this.data.albums);
 
     return (
       <ListView
-        dataSource={this.state.dataSource}
+        dataSource={this.state.dataSource.cloneWithRows(this.data.albums)}
         renderRow={this.renderNewAlbum}
         style={styles.listview}
       />
     );
   },
 
-  renderLoadingView: function() {
-      return(
-        <View style={styles.container}>
-          <Text>
-            Loading NEW_ALBUMS
-          </Text>
-        </View>
-      );
-    },
-
   renderNewAlbum: function(album) {
+
+    console.log(album);
+
+    var albumArray = this.data.albums.map(function(c) {
+      return c;
+    });
+
+    console.log(albumArray);
+
     return(
       <TouchableHighlight
         underlayColor='#dddddd'
         onPress={() => this.selectAlbum(album)}>
         <View style={styles.container}>
           <Image
-            source={{uri: album.album_artwork.thumbnail}}
+            source={album.album_artwork}
             style={styles.thumbnail}
-          />
+            />
           <View style={styles.rightContainer}>
             <Text style={styles.artist_name}>{album.artist_name}</Text>
             <Text style={styles.album_name}>{album.album_name}</Text>

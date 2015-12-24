@@ -70,7 +70,7 @@ var styles = StyleSheet.create({
     fontSize: 8,
   },
   thumbnail: {
-    width: 53,
+    width: 81,
     height: 81,
   },
   listview: {
@@ -82,7 +82,7 @@ var styles = StyleSheet.create({
 var HomePage = React.createClass({
   mixins: [ParseReact.Mixin],
 
-  observe: function(props, state) {
+  observe: function() {
     return {
       albums: (new Parse.Query('Album')).descending('release_date')
     };
@@ -96,13 +96,13 @@ var HomePage = React.createClass({
     };
   },
 
-  // componentDidMount: function() {
+  // componentWillMount: function() {
   //   this.fetchData();
   // },
   //
   // fetchData: function() {
   //   this.setState({
-  //     dataSource: this.data.albums.map,
+  //     // dataSource: this.data.albums,
   //     loaded: true,
   //   });
   // },
@@ -117,8 +117,6 @@ var HomePage = React.createClass({
 
   render: function() {
 
-    console.log(this.data.albums);
-
     return (
       <ListView
         dataSource={this.state.dataSource.cloneWithRows(this.data.albums)}
@@ -130,27 +128,19 @@ var HomePage = React.createClass({
 
   renderNewAlbum: function(album) {
 
-    console.log(album);
-
-    var albumArray = this.data.albums.map(function(c) {
-      return c;
-    });
-
-    console.log(albumArray);
-
     return(
       <TouchableHighlight
         underlayColor='#dddddd'
         onPress={() => this.selectAlbum(album)}>
         <View style={styles.container}>
           <Image
-            source={album.album_artwork}
+            source={{uri: album.album_artwork.url()}}
             style={styles.thumbnail}
-            />
+          />
           <View style={styles.rightContainer}>
             <Text style={styles.artist_name}>{album.artist_name}</Text>
             <Text style={styles.album_name}>{album.album_name}</Text>
-            <Text style={styles.release_date}>{album.release_date}</Text>
+            <Text style={styles.release_date}>{album.release_date.toDateString()}</Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -158,18 +148,10 @@ var HomePage = React.createClass({
   },
 });
 
-var NEW_ALBUMS = [
-  {artist_name: 'Jay-Z', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$49.99', release_date: '21/12/2013', album_name: 'The Blueprint 3'},
-  {artist_name: 'Disclosure', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$9.99', release_date: '01/01/2015', album_name: 'Caracal'},
-  {artist_name: 'Disclosure', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$29.99', release_date: '30/01/2012', album_name: 'Settle'},
-  {artist_name: 'Beck', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$99.99', release_date: '05/06/2006', album_name: 'Guero'},
-  {artist_name: 'Armin Van Burren', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$399.99', release_date: '11/02/2013', album_name: 'Intense'},
-  {artist_name: 'Alicia Keys', album_artwork: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}, album_price: '$199.99', release_date: '16/11/1999', album_name: 'As I Am'}
-];
-
-var USER_ARTISTS = [
-  {user_artist_name: 'Beck'},
-  {user_artist_name: 'Disclosure'}
-];
+//
+// var USER_ARTISTS = [
+//   {user_artist_name: 'Beck'},
+//   {user_artist_name: 'Disclosure'}
+// ];
 
 module.exports = HomePage;

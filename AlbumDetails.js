@@ -92,13 +92,13 @@ var AlbumDetails = React.createClass({
     return (
       <View style={styles.container}>
         <Image
-          source={{uri: this.props.album.album_artwork.thumbnail}}
+          source={{uri: this.props.album.album_artwork.url()}}
           style={styles.largeArtwork}
         />
         <View style={styles.rightContainer}>
           <Text style={styles.artist_name}>{this.props.album.artist_name}</Text>
           <Text style={styles.album_name}>{this.props.album.album_name}</Text>
-          <Text style={styles.release_date}>{this.props.album.release_date}</Text>
+          <Text style={styles.release_date}>{this.props.album.release_date.toDateString()}</Text>
           <Text style={styles.album_price}>{this.props.album.album_price}</Text>
         </View>
         <View>

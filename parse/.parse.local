@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "NeverMissA": {
+      "applicationId": "O2Fw3IPHmhoprtnktLBzFPuQqLWU9ZoN3QYNDCrA"
+    },
+    "_default": {
+      "link": "NeverMissA"
+    }
+  }
+}

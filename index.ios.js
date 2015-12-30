@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react-native');
+var Parse = require('parse/react-native');
+var ParseReact = require('parse-react/react-native');
 var HomePage = require('./HomePage');
 var AddArtists = require('./AddArtists');
 var AlbumDetails = require('./AlbumDetails');
@@ -15,17 +17,11 @@ var {
   NavigatorIOS
 } = React;
 
-var styles = StyleSheet.create({
-  text: {
-    color: 'black',
-    backgroundColor: 'white',
-    fontSize: 30,
-    margin: 80
-  },
-  container: {
-    flex: 1
-  },
-});
+Parse.initialize(
+  'O2Fw3IPHmhoprtnktLBzFPuQqLWU9ZoN3QYNDCrA',
+  'v8pz1yu5ixvxiWq2qqIuOGyWStZwFU4mlubcCNpd'
+);
+
 
 var NeverMissA = React.createClass({
 
@@ -52,5 +48,16 @@ var NeverMissA = React.createClass({
   }
 });
 
+var styles = StyleSheet.create({
+  text: {
+    color: 'black',
+    backgroundColor: 'white',
+    fontSize: 30,
+    margin: 80
+  },
+  container: {
+    flex: 1
+  },
+});
 
 React.AppRegistry.registerComponent('NeverMissA', () => NeverMissA);

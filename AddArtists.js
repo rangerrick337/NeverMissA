@@ -14,6 +14,18 @@ var {
   NavigatorIOS
 } = React;
 
+var AddArtists = React.createClass({
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>You're on the AddArtists page!</Text>
+      </View>
+
+      );
+    }
+});
+
 var styles = StyleSheet.create({
   thumb: {
     width: 80,
@@ -50,18 +62,5 @@ var styles = StyleSheet.create({
     margin: 80
   },
 });
-
-var AddArtists = React.createClass({
-
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>You're on the AddArtists page!</Text>
-      </View>
-
-      );
-    }
-});
-
 
 module.exports = AddArtists;

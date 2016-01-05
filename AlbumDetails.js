@@ -46,6 +46,11 @@ var styles = StyleSheet.create({
     height: 80,
     marginRight: 10
   },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
   textContainer: {
     flex: 1
   },

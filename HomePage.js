@@ -6,6 +6,7 @@ var ParseReact = require('parse-react/react-native');
 var AlbumRow = require('./AlbumRow')
 var AddArtists = require('./AddArtists');
 var AlbumDetails = require('./AlbumDetails');
+// var Login = require('./Login');
 
 var {
   StyleSheet,
@@ -39,8 +40,9 @@ var HomePage = React.createClass({
   // },
   //
   // fetchData: function() {
+  //
   //   this.setState({
-  //     // dataSource: this.data.albums,
+  //     dataSource: this.data.albums,
   //     loaded: true,
   //   });
   // },
@@ -53,14 +55,12 @@ var HomePage = React.createClass({
     });
   },
 
-  onEndReached: function()
   render: function() {
     return (
       <ListView
         dataSource={this.state.dataSource.cloneWithRows(this.data.albums)}
-        initalListSize='8'
+        initalListSize={10}
         renderRow={this.renderNewAlbum}
-        onEndReached={this.onEndReached}
         style={styles.listview}
       />
     );
@@ -74,7 +74,7 @@ var HomePage = React.createClass({
           this.selectAlbum(savedAlbum)
         }}  />
     );
-  },
+  }
 });
 
 //

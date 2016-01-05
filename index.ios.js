@@ -6,6 +6,7 @@ var ParseReact = require('parse-react/react-native');
 var HomePage = require('./HomePage');
 var AddArtists = require('./AddArtists');
 var AlbumDetails = require('./AlbumDetails');
+var LoginPage = require('./LoginPage');
 
 var {
   StyleSheet,
@@ -28,7 +29,7 @@ var NeverMissA = React.createClass({
   onRightButtonPress: function() {
     this.refs.nav.push({
       title: 'Add Artists',
-      component: AddArtists,
+      component: LoginPage,
    })
  },
 

@@ -17,6 +17,12 @@ var {
   NavigatorIOS
 } = React;
 
+Parse.initialize(
+  'O2Fw3IPHmhoprtnktLBzFPuQqLWU9ZoN3QYNDCrA',
+  'v8pz1yu5ixvxiWq2qqIuOGyWStZwFU4mlubcCNpd'
+);
+
+
 var HomePage = React.createClass({
   mixins: [ParseReact.Mixin],
 

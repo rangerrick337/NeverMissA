@@ -14,32 +14,6 @@ var {
   NavigatorIOS
 } = React;
 
-var AlbumDetails = React.createClass({
-
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Image
-          source={{uri: this.props.album.album_artwork.url()}}
-          style={styles.largeArtwork}
-        />
-        <View style={styles.rightContainer}>
-          <Text style={styles.artist_name}>{this.props.album.artist_name}</Text>
-          <Text style={styles.album_name}>{this.props.album.album_name}</Text>
-          <Text style={styles.release_date}>{this.props.album.release_date.toDateString()}</Text>
-          <Text style={styles.album_price}>{this.props.album.album_price}</Text>
-        </View>
-        <View>
-          <TouchableHighlight style={styles.button}
-              underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Buy on iTunes</Text>
-          </TouchableHighlight>
-        </View>
-      </View>
-      );
-    }
-});
-
 var styles = StyleSheet.create({
   thumb: {
     width: 80,
@@ -111,5 +85,32 @@ var styles = StyleSheet.create({
     height: 300
   },
 });
+
+var AlbumDetails = React.createClass({
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <Image
+          source={{uri: this.props.album.album_artwork.url()}}
+          style={styles.largeArtwork}
+        />
+        <View style={styles.rightContainer}>
+          <Text style={styles.artist_name}>{this.props.album.artist_name}</Text>
+          <Text style={styles.album_name}>{this.props.album.album_name}</Text>
+          <Text style={styles.release_date}>{this.props.album.release_date.toDateString()}</Text>
+          <Text style={styles.album_price}>{this.props.album.album_price}</Text>
+        </View>
+        <View>
+          <TouchableHighlight style={styles.button}
+              underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Buy on iTunes</Text>
+          </TouchableHighlight>
+        </View>
+      </View>
+      );
+    }
+});
+
 
 module.exports = AlbumDetails;

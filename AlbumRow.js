@@ -1,8 +1,6 @@
 'use strict';
 
 var React = require('react-native');
-var Parse = require('parse/react-native');
-var ParseReact = require('parse-react/react-native');
 
 var {
   Image,

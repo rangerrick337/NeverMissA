@@ -53,14 +53,11 @@ var HomePage = React.createClass({
     });
   },
 
-  onEndReached: function()
   render: function() {
     return (
       <ListView
         dataSource={this.state.dataSource.cloneWithRows(this.data.albums)}
-        initalListSize='8'
         renderRow={this.renderNewAlbum}
-        onEndReached={this.onEndReached}
         style={styles.listview}
       />
     );

@@ -12,14 +12,12 @@ Parse.Cloud.job("GetAlbums", function(request, response) {
         res.rss.channel.item.each(function(i, item){
           var AlbumToAdd = Parse.Object.extend("Album");
           var albumToAdd = new AlbumToAdd();
-          var date = new Date (item['itms:releasedate'].text());
 
           // var price = item['itms:albumPrice'];
           // var price_as_number = price.replace(/\$|,/g, '');
           albumToAdd.set("artist_name", item['itms:artist'].text());
           albumToAdd.set("album_name", item['itms:album'].text());
           albumToAdd.set("album_price", item['itms:albumPrice'].text());
-          albumToAdd.set("release_date", date);
           console.log(albumToAdd);
 
           return toSaves.push(albumToAdd);
